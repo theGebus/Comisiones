@@ -2,32 +2,55 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Comisiones</title>
     <link rel="stylesheet" href="ventas.css">
     <script src="ventas.js"></script>
+    <script src="utilitarios.js"></script>
 </head>
 <body>
+    <main class="contenedor">
+        <header class="encabezado">
+            <p class="etiqueta">VENTAS / CALCULADORA</p>
+            <h1>Calculadora de <span class="acento">comisiones</span></h1>
+            <p class="introduccion">Cada venta cuenta. Calcula tu comisión y conoce tu ingreso total.</p>
+        </header>
 
-    <div class="contenedor">
-        <h1>Calculadora de Comisiones</h1>
+        <div class="paneles">
+            <section class="datos" aria-label="Datos para calcular la comisión">
+                <div class="titulo-seccion"><span class="paso" aria-hidden="true">01</span><h2>Ingresa tus datos</h2></div>
+                <div class="campo">
+                    <label for="txtSueldoBase">Salario base</label>
+                    <div class="entrada"><span aria-hidden="true">$</span><input type="text" inputmode="decimal" id="txtSueldoBase" placeholder="0.00"></div>
+                </div>
+                <div class="campo">
+                    <label for="txtVentas">Número de ventas</label>
+                    <div class="entrada"><input type="text" inputmode="numeric" id="txtVentas" placeholder="0"><span class="unidad" aria-hidden="true">ventas</span></div>
+                </div>
+                <div class="campo">
+                    <label for="txtPrecio">Precio del producto</label>
+                    <div class="entrada"><span aria-hidden="true">$</span><input type="text" inputmode="decimal" id="txtPrecio" placeholder="0.00"></div>
+                </div>
+                <button type="button" onclick="calcular()">Calcular comisión <span aria-hidden="true">↗</span></button>
+                <p class="ayuda">Para los decimales, utiliza un punto. Ejemplo: 25.50.</p>
+            </section>
 
-        <label>Salario Base:</label>
-        <input type="text" id="txtSueldoBase">
-
-        <label>Número de ventas:</label>
-        <input type="text" id="txtVentas">
-
-        <label>Precio del producto:</label>
-        <input type="text" id="txtPrecio">
-
-        <button onclick="calcular()">Calcular Comisión</button>
-
-        <h2>Resultados</h2>
-        <p>Salario Base: <span id="spSueldoBase"></span></p>
-        <p>Comisión: <span id="spComision"></span></p>
-        <p>Total: <span id="spTotal"></span></p>
-    </div>
-
-    
+            <section class="resultados" aria-label="Resultados del cálculo" aria-live="polite" aria-atomic="true">
+                <div class="titulo-seccion"><span class="paso" aria-hidden="true">02</span><h2>Tu resumen</h2></div>
+                <p class="descripcion">Tus ingresos, en un solo lugar.</p>
+                <div class="desglose">
+                    <p><span>Salario base</span><strong>$ <span id="spSueldoBase">0.00</span></strong></p>
+                    <p><span>Comisión</span><strong class="acento">$ <span id="spComision">0.00</span></strong></p>
+                </div>
+                <div class="total">
+                    <p>Total a recibir</p>
+                    <strong>$ <span id="spTotal">0.00</span></strong>
+                    <p class="detalle-total">Salario base + comisión</p>
+                </div>
+                <p class="nota"><strong>¿Cómo se calcula?</strong> Ganas el 10 % del precio del producto por cada venta adicional a las primeras 5.</p>
+            </section>
+        </div>
+        <footer>Calcula. Revisa. Sigue creciendo.</footer>
+    </main>
 </body>
 </html>
